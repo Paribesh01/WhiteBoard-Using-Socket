@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <input class="name" placeholder="Room Name" type="text" />
+    <button class="create">Create</button>
+
+    <div class="rooms">
+      <% for (let room in rooms) { %>
+      <div>
+        <%= room %>
+        <a id="<%= room %>" class="room" href="/<%= room %>">Join</a>
+      </div>
+
+      <% }; %>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
