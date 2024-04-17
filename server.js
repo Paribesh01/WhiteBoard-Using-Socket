@@ -54,6 +54,21 @@ io.on("connection", (socket) => {
     socket.broadcast.to(data.roomId).emit("clear");
   });
 
+  socket.on("start", (data) => {
+    const roomId = data.roomId;
+    const heyUsers = Object.keys(rooms[roomId].user); // Extract user IDs from the room object
+    const randomUserId = heyUsers[Math.floor(Math.random() * heyUsers.length)]; // Choose a random user ID
+
+    // Emit "hi" to the randomly chosen user
+    io.to(randomUserId).emit("choise", "yes");
+
+    // Emit "Hello!" to all other users in the room
+    heyUsers.forEach((userId) => {
+      if (userId !== randomUserId) {
+        io.to(userId).emit("choise", "no");
+      }
+    });
+  });
   socket.on("disconnect", () => {
     console.log("user disconnected");
   });

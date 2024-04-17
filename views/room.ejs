@@ -8,16 +8,28 @@
       #mycanvas {
         border: 1px solid blue;
       }
+      .block {
+        z-index: -100;
+      }
+      .blo {
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        position: absolute;
+        /* background-color: ; */
+      }
     </style>
   </head>
   <body>
     <h1>Room</h1>
     <h3 class="name">Name</h3>
+    <button class="start">Start</button>
+    <H3 class="turn"></H3>
     <div class="main">
+      <div class="block blo"></div>
       <button class="clear">Clear</button>
       <canvas id="mycanvas"></canvas>
     </div>
-
     <script src="/socket.io/socket.io.js"></script>
     <script src="room.js"></script>
   </body>

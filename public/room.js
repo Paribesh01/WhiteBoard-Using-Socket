@@ -52,6 +52,20 @@ window.addEventListener("load", () => {
     socket.on("clear", () => {
       clearCanvas();
     });
+    socket.on("choise", (data) => {
+      console.log(data);
+      document.querySelector(".start").disabled = true;
+      if (data == "yes") {
+        document.querySelector(".turn").innerText = "You got selected!!";
+        document.querySelector(".block").classList.remove("blo");
+      } else {
+        document.querySelector(".clear").disabled = true;
+      }
+    });
+
+    document.querySelector(".start").addEventListener("click", () => {
+      socket.emit("start", { roomId: lastPart });
+    });
 
     function startDrawing(e) {
       // if (isClean) {
